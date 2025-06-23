@@ -1,2 +1,6 @@
 openai
 python-dotenv
+pydub
+mutagen
+azure-storage-blob
+azure-identity

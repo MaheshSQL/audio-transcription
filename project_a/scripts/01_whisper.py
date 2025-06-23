@@ -26,10 +26,10 @@ result = client.audio.transcriptions.create(
     file=open(audio_test_file_selected, "rb"),            
     model=deployment_id,
     temperature=0,
-    prompt='''You are generating a text transcript for documentation. 
-    You will be given audio file, listen to it carefully ignoring background sounds.
-    Do not guess words that you cannot hear clearly.''',
-    # response_format="json" # text, srt
+    # prompt='''You are generating a text transcript for documentation. 
+    # You will be given audio file, listen to it carefully ignoring background sounds.
+    # Do not guess words that you cannot hear clearly.''',    
+    # # response_format="json" # text, srt
 )
 
 end_time = time.time()
