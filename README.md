@@ -12,3 +12,5 @@ This repo contains demo code for performing audio transcription using Azure AI s
 _.env_ template and _requirements.txt_ files are included.
 
 _demo_flag_ can be set to _True_ to run the code on included audio sample.
+
+![](project_a/images/transcripts_side_by_side.png)
