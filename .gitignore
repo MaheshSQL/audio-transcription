@@ -195,5 +195,6 @@ cython_debug/
 
 /project_a/audio_files/*
 /project_a/transcripts/*
+/project_a/transcripts_sample/*.json
 /project_a/.env
 /project_a/MK_*

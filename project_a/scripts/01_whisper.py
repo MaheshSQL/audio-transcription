@@ -8,11 +8,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-start_time = time.time()  
+start_time = time.time()
+
+demo_flag = True
+print(f'demo_flag: {demo_flag}')
 
 deployment_id = "whisper" # "gpt-4o-transcribe" 
-audio_test_files = ["../audio_files/4379528_trimmed.mp3", "../audio_files/4379528.mp3"]
-output_path = "../transcripts"
+audio_test_files = ["../audio_files/4379528_trimmed.mp3", "../audio_files/4379528.mp3"] if not demo_flag else ["../audio_files_sample/wikipediaOcelot.wav"]
+output_path = "../transcripts" if not demo_flag else "../transcripts_sample"
  
 client = AzureOpenAI(
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),  
@@ -20,7 +23,7 @@ client = AzureOpenAI(
     azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
 )
 
-audio_test_file_selected = audio_test_files[1] # Select the file from the list
+audio_test_file_selected = audio_test_files[1] if not demo_flag else audio_test_files[0] # Select the file from the list
 
 result = client.audio.transcriptions.create(
     file=open(audio_test_file_selected, "rb"),            

@@ -14,9 +14,12 @@ load_dotenv()
 
 start_time = time.time()  
 
+demo_flag = True
+print(f'demo_flag: {demo_flag}')
+
 deployment_id = "gpt-4o-audio-preview"
-audio_test_files = ["../audio_files/4379528_trimmed.mp3", "../audio_files/4379528.mp3"]
-output_path = "../transcripts"
+audio_test_files = ["../audio_files/4379528_trimmed.mp3", "../audio_files/4379528.mp3"] if not demo_flag else ["../audio_files_sample/wikipediaOcelot.wav"]
+output_path = "../transcripts" if not demo_flag else "../transcripts_sample"
  
 client = AzureOpenAI(
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),  
@@ -24,7 +27,7 @@ client = AzureOpenAI(
     azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
 )
 
-audio_test_file_selected = audio_test_files[1] # Select the file from the list
+audio_test_file_selected = audio_test_files[1] if not demo_flag else audio_test_files[0] # Select the file from the list
 audio_test_file_extension = os.path.splitext(audio_test_file_selected)[1].split('.')[1] # mp3, wav, etc.
 print(f'audio_test_file_extension: {audio_test_file_extension}')
 
